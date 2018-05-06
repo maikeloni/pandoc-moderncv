@@ -4,7 +4,7 @@ FONTS_DIR = fonts
 SCAFFOLDS_DIR = scaffolds
 IMAGES_DIR = $(SRC_DIR)/images
 DIST_DIR = dist
-HTMLTOPDF = wkpdf
+HTMLTOPDF = wkpdfhtmltopdf
 DATE = $(shell date +'%B %d, %Y')
 
 ifeq "$(wildcard $(SRC_DIR) )" ""
@@ -68,7 +68,7 @@ media: | directories
 html: media style templates/cv.html parts $(SRC_DIR)/cv.md | directories
 	pandoc --standalone \
 	  --section-divs \
-	  --smart \
+	  -smart \
 	  --template templates/cv.html \
 	  --from markdown+yaml_metadata_block+header_attributes+definition_lists \
 	  --to html5 \
